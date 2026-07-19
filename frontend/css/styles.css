@@ -1,0 +1,76 @@
+body {
+    margin:0;
+    font-family: "inter", sans-serif;
+}
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+.summary-card {
+    background-color: rgb(247, 248, 248);
+    border-radius: 12px;
+    border: 1px solid #1d1d1d;
+    padding: 14px;
+}
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+} 
+.sidebar {
+    background-color: #111827;
+    color: white;
+    padding: 28px 20px;
+}
+
+.sidebar-brand h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.sidebar-brand p {
+    margin-top: 6px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+.sidebar-navigation {
+    margin-top: 36px;
+}
+
+.sidebar-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-navigation li {
+    margin-bottom: 8px;
+}
+
+.sidebar-navigation a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #d1d5db;
+    text-decoration: none;
+}
+
+.sidebar-navigation a:hover,
+.sidebar-navigation a[aria-current="page"] {
+    background-color:#1742b1;
+    color: white;
+}
+.dashboard {
+    padding: 40px;
+}
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.dashboard-header h2{
+    margin-bottom:10px;
+}
