@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FinanceOps Dashboard</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+
+  <body>
+    <div class="app-layout">
+
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <h1>FinanceOps</h1>
+          <p>Financial Operations</p>
+        </div>
+
+        <nav class="sidebar-navigation" aria-label="Main navigation">
+          <ul>
+            <li>
+              <a href="./index.html" aria-current="page">Dashboard</a>
+            </li>
+
+            <li>
+              <a href="./pages/transactions.html">Transactions</a>
+            </li>
+
+            <li>
+              <a href="./pages/revenue.html">Revenue</a>
+            </li>
+
+            <li>
+              <a href="./pages/expenses.html">Expenses</a>
+            </li>
+
+            <li>
+              <a href="#">Budgets</a>
+            </li>
+
+            <li>
+              <a href="#">Invoices</a>
+            </li>
+
+            <li>
+              <a href="#">Reconciliation</a>
+            </li>
+
+            <li>
+              <a href="#">Reports</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="dashboard">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Financial overview</p>
+            <h2>Dashboard</h2>
+
+            <p>
+              Review the company’s financial performance and recent activity.
+            </p>
+          </div>
+
+          <div class="dashboard-actions">
+            <label for="reporting-period">Reporting period</label>
+
+            <select id="reporting-period" name="reporting-period">
+              <option value="month">This month</option>
+              <option value="last-month">Last month</option>
+              <option value="quarter">This quarter</option>
+              <option value="year">This year</option>
+            </select>
+
+            <button type="button">Add transaction</button>
+          </div>
+        </header>
+
+        <section class="summary-section" aria-labelledby="summary-heading">
+          <div class="section-heading">
+            <h2 id="summary-heading">Financial summary</h2>
+            <p>Key financial results for the selected reporting period.</p>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card">
+              <h3>Total revenue</h3>
+              <p class="summary-value">$84,500</p>
+              <p>12.4% higher than last month</p>
+            </article>
+
+            <article class="summary-card">
+              <h3>Total expenses</h3>
+              <p class="summary-value">$52,300</p>
+              <p>4.8% higher than last month</p>
+            </article>
+
+            <article class="summary-card">
+              <h3>Net profit</h3>
+              <p class="summary-value">$32,200</p>
+              <p>Revenue minus expenses</p>
+            </article>
+
+            <article class="summary-card">
+              <h3>Profit margin</h3>
+              <p class="summary-value">38.1%</p>
+              <p>Share of revenue retained as profit</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="overview-section" aria-labelledby="overview-heading">
+          <div class="section-heading">
+            <h2 id="overview-heading">Revenue and expense overview</h2>
+            <p>Compare business income and spending over time.</p>
+          </div>
+
+          <div class="chart-placeholder">
+            <p>Revenue and expense chart will appear here.</p>
+          </div>
+        </section>
+
+        <section
+          class="transactions-section"
+          aria-labelledby="transactions-heading"
+        >
+          <div class="section-heading">
+            <div>
+              <h2 id="transactions-heading">Recent transactions</h2>
+              <p>The latest recorded revenue and expenses.</p>
+            </div>
+
+            <a href="./pages/transactions.html">View all transactions</a>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Jul 18, 2026</td>
+                  <td>Client payment</td>
+                  <td>Sales</td>
+                  <td>Revenue</td>
+                  <td>$4,800</td>
+                  <td>Completed</td>
+                </tr>
+
+                <tr>
+                  <td>Jul 17, 2026</td>
+                  <td>Cloud software</td>
+                  <td>Software</td>
+                  <td>Expense</td>
+                  <td>$620</td>
+                  <td>Completed</td>
+                </tr>
+
+                <tr>
+                  <td>Jul 16, 2026</td>
+                  <td>Office rent</td>
+                  <td>Operations</td>
+                  <td>Expense</td>
+                  <td>$3,200</td>
+                  <td>Completed</td>
+                </tr>
+
+                <tr>
+                  <td>Jul 15, 2026</td>
+                  <td>Consulting service</td>
+                  <td>Services</td>
+                  <td>Revenue</td>
+                  <td>$2,500</td>
+                  <td>Pending</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="attention-section" aria-labelledby="attention-heading">
+          <div class="section-heading">
+            <h2 id="attention-heading">Attention required</h2>
+            <p>Financial records that may require action.</p>
+          </div>
+
+          <ul class="attention-list">
+            <li>Invoice INV-104 is eight days overdue.</li>
+            <li>Software expenses exceeded the monthly budget by $430.</li>
+            <li>Transaction TX-209 has not been categorized.</li>
+          </ul>
+        </section>
+      </main>
+
+    </div>
+
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>

@@ -21,4 +21,5 @@ Required actions
 Possible future features:
 - upcoming payments
 - budget status
-accounts payable/receivable 
+accounts payable/receivable
+ 
