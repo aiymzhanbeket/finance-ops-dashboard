@@ -10,19 +10,24 @@
 
     <title>FinanceOps Dashboard</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
+    <link
+      rel="preconnect"
       href="https://fonts.gstatic.com"
-      crossorigin>
+      crossorigin
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet">    
-<link rel="stylesheet" href="./css/styles.css">  </head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
 
   <body>
     <div class="app-layout">
-
       <aside class="sidebar">
         <div class="sidebar-brand">
           <h1>FinanceOps</h1>
@@ -101,13 +106,17 @@
             <article class="summary-card">
               <h3>Total revenue</h3>
               <p class="summary-value">$84,500</p>
-              <p>12.4% higher than last month</p>
+              <p class="summary-positive">
+                12.4% higher than last month
+              </p>
             </article>
 
             <article class="summary-card">
               <h3>Total expenses</h3>
               <p class="summary-value">$52,300</p>
-              <p>4.8% higher than last month</p>
+              <p class="summary-negative">
+                4.8% higher than last month
+              </p>
             </article>
 
             <article class="summary-card">
@@ -145,7 +154,9 @@
               <p>The latest recorded revenue and expenses.</p>
             </div>
 
-            <a href="./pages/transactions.html">View all transactions</a>
+            <a href="./pages/transactions.html">
+              View all transactions
+            </a>
           </div>
 
           <div class="table-wrapper">
@@ -202,7 +213,10 @@
           </div>
         </section>
 
-        <section class="attention-section" aria-labelledby="attention-heading">
+        <section
+          class="attention-section"
+          aria-labelledby="attention-heading"
+        >
           <div class="section-heading">
             <h2 id="attention-heading">Attention required</h2>
             <p>Financial records that may require action.</p>
@@ -210,14 +224,16 @@
 
           <ul class="attention-list">
             <li>Invoice INV-104 is eight days overdue.</li>
-            <li>Software expenses exceeded the monthly budget by $430.</li>
+            <li>
+              Software expenses exceeded the monthly budget by $430.
+            </li>
             <li>Transaction TX-209 has not been categorized.</li>
           </ul>
         </section>
       </main>
-
     </div>
 
     <script src="./js/dashboard.js"></script>
   </body>
 </html>
+
