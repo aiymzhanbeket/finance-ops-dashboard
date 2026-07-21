@@ -257,3 +257,60 @@ tbody tr:hover {
 .summary-negative {
     color: #dc2626;
 }
+@media (max-width: 1000px) {
+    .app-layout {
+        grid-template-columns: 210px 1fr;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 700px) {
+    .app-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 20px;
+    }
+
+    .sidebar-navigation ul {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+    }
+
+    .sidebar-navigation li {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .dashboard {
+        padding: 20px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+    }
+
+    .dashboard-actions {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .dashboard-actions select,
+    .dashboard-actions button {
+        flex: 1;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
