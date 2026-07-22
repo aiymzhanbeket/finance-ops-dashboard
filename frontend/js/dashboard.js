@@ -1,5 +1,6 @@
 const chartCanvas = document.getElementById("financeChart");
 
+const revenue = [42000, 48000, 53000, 61000, 72000, 84500]; //easy then to replace with backend
 const financeChart = new Chart(chartCanvas, {
   type: "line",
 
@@ -9,7 +10,7 @@ const financeChart = new Chart(chartCanvas, {
     datasets: [
      {
     label: "Revenue",
-    data: [42000, 48000, 53000, 61000, 72000, 84500],
+    data: revenue,
     borderColor: "#16a34a",
     backgroundColor: "rgba(22, 163, 74, 0.15)",
     borderWidth: 3,
@@ -18,7 +19,7 @@ const financeChart = new Chart(chartCanvas, {
      },
      {
     label: "Expenses",
-    data: [30000, 32000, 39000, 41000, 47000, 52300],
+    data: expenses,
     borderColor: "#dc2626",
     backgroundColor: "rgba(220, 38, 38, 0.15)",
     borderWidth: 3,
