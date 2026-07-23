@@ -92,7 +92,9 @@
               <option value="year">This year</option>
             </select>
 
-            <button type="button">Add transaction</button>
+            <button id="add-transaction-btn" type="button"> <!--id lets js to find the exact button-->
+              Add transaction
+            </button>
           </div>
         </header>
 
@@ -232,6 +234,50 @@
         </section>
       </main>
     </div>
+
+    <div class="modal" id="transaction-modal" hidden>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add transaction</h2>
+
+      <button
+        id="close-modal-btn"
+        type="button"
+        aria-label="Close transaction form"
+      >
+        ×
+      </button>
+    </div>
+
+    <form id="transaction-form">
+      <label for="transaction-description">Description</label>
+      <input
+        id="transaction-description"
+        name="description"
+        type="text"
+        required
+      >
+
+      <label for="transaction-amount">Amount</label>
+      <input
+        id="transaction-amount"
+        name="amount"
+        type="number"
+        min="0.01"
+        step="0.01"
+        required
+      >
+
+      <label for="transaction-type">Type</label>
+      <select id="transaction-type" name="type" required>
+        <option value="Revenue">Revenue</option>
+        <option value="Expense">Expense</option>
+      </select>
+
+      <button type="submit">Save transaction</button>
+    </form>
+  </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/dashboard.js"></script>
