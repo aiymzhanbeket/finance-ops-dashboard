@@ -52,6 +52,21 @@ const transactionForm =
 const transactionTableBody =
   document.querySelector(".transactions-section tbody");
 
+const totalRevenueElement =
+  document.getElementById("total-revenue");
+
+const totalExpensesElement =
+  document.getElementById("total-expenses");
+
+const netProfitElement =
+  document.getElementById("net-profit");
+
+const profitMarginElement =
+  document.getElementById("profit-margin");
+
+let totalRevenue = 84500;
+let totalExpenses = 52300;
+
 transactionForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -90,6 +105,33 @@ newRow.innerHTML = `
 `;
 
 transactionTableBody.prepend(newRow);
+
+const amount = Number(amountInput.value);
+
+if (typeInput.value === "Revenue") {
+  totalRevenue += amount;
+} else {
+  totalExpenses += amount;
+}
+
+const netProfit = totalRevenue - totalExpenses;
+
+const profitMargin =
+  totalRevenue === 0
+    ? 0
+    : (netProfit / totalRevenue) * 100;
+
+totalRevenueElement.textContent =
+  `$${totalRevenue.toLocaleString()}`;
+
+totalExpensesElement.textContent =
+  `$${totalExpenses.toLocaleString()}`;
+
+netProfitElement.textContent =
+  `$${netProfit.toLocaleString()}`;
+
+profitMarginElement.textContent =
+  `${profitMargin.toFixed(1)}%`;
 
 transactionForm.reset();
 
