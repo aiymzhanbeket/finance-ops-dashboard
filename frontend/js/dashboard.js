@@ -1,6 +1,7 @@
 const chartCanvas = document.getElementById("financeChart");
 
 const revenue = [42000, 48000, 53000, 61000, 72000, 84500]; //easy then to replace with backend
+const expenses = [30000, 32000, 39000, 41000, 47000, 52300];
 const financeChart = new Chart(chartCanvas, {
   type: "line",
 
@@ -28,4 +29,69 @@ const financeChart = new Chart(chartCanvas, {
      }
     ]
   }
+});
+const addTransactionButton =
+  document.getElementById("add-transaction-btn");
+
+const closeModalButton =
+  document.getElementById("close-modal-btn");
+
+const transactionModal =
+  document.getElementById("transaction-modal");
+
+addTransactionButton.addEventListener("click", function () {
+  transactionModal.hidden = false;
+});
+
+closeModalButton.addEventListener("click", function () {
+  transactionModal.hidden = true;
+});
+const transactionForm =
+  document.getElementById("transaction-form");
+
+const transactionTableBody =
+  document.querySelector(".transactions-section tbody");
+
+transactionForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+const categoryInput =
+  document.getElementById("transaction-category");
+
+const dateInput =
+  document.getElementById("transaction-date");  
+
+  const descriptionInput =
+    document.getElementById("transaction-description");
+
+  const amountInput =
+    document.getElementById("transaction-amount");
+
+  const typeInput =
+    document.getElementById("transaction-type");
+
+  const newRow = document.createElement("tr");
+
+ const formattedDate = new Date(
+  `${dateInput.value}T00:00:00`
+).toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric"
+});
+
+newRow.innerHTML = `
+  <td>${formattedDate}</td>
+  <td>${descriptionInput.value}</td>
+  <td>${categoryInput.value}</td>
+  <td>${typeInput.value}</td>
+  <td>$${Number(amountInput.value).toLocaleString()}</td>
+  <td>Pending</td>
+`;
+
+transactionTableBody.prepend(newRow);
+
+transactionForm.reset();
+
+transactionModal.hidden = true;
 });
