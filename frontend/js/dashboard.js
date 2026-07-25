@@ -1,3 +1,4 @@
+const transactions = [];
 const chartCanvas = document.getElementById("financeChart");
 
 const revenue = [42000, 48000, 53000, 61000, 72000, 84500]; //easy then to replace with backend
@@ -70,14 +71,6 @@ let totalExpenses = 52300;
 transactionForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-const transaction = {
-  description: descriptionInput.value.trim(),
-  category: categoryInput.value.trim(),
-  amount: Number(amountInput.value),
-  type: typeInput.value,
-  date: dateInput.value,
-  status: "Pending"
-};
 
 const categoryInput =
   document.getElementById("transaction-category");
@@ -93,6 +86,18 @@ const dateInput =
 
   const typeInput =
     document.getElementById("transaction-type");
+
+  const transaction = {
+  description: descriptionInput.value.trim(),
+  category: categoryInput.value.trim(),
+  amount: Number(amountInput.value),
+  type: typeInput.value,
+  date: dateInput.value,
+  status: "Pending"
+};
+
+  transactions.unshift(transaction);
+  console.log(transactions);
 
   const newRow = document.createElement("tr");
 
@@ -114,8 +119,6 @@ newRow.innerHTML = `
 `;
 
 transactionTableBody.prepend(newRow);
-
-const amount = Number(amountInput.value);
 
 if (transaction.type === "Revenue") {
   totalRevenue += transaction.amount;
