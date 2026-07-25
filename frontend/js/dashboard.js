@@ -70,6 +70,15 @@ let totalExpenses = 52300;
 transactionForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
+const transaction = {
+  description: descriptionInput.value.trim(),
+  category: categoryInput.value.trim(),
+  amount: Number(amountInput.value),
+  type: typeInput.value,
+  date: dateInput.value,
+  status: "Pending"
+};
+
 const categoryInput =
   document.getElementById("transaction-category");
 
@@ -97,21 +106,21 @@ const dateInput =
 
 newRow.innerHTML = `
   <td>${formattedDate}</td>
-  <td>${descriptionInput.value}</td>
-  <td>${categoryInput.value}</td>
-  <td>${typeInput.value}</td>
-  <td>$${Number(amountInput.value).toLocaleString()}</td>
-  <td>Pending</td>
+  <td>${transaction.description}</td>
+  <td>${transaction.category}</td>
+  <td>${transaction.type}</td>
+  <td>$${transaction.amount.toLocaleString()}</td>
+  <td>${transaction.status}</td>
 `;
 
 transactionTableBody.prepend(newRow);
 
 const amount = Number(amountInput.value);
 
-if (typeInput.value === "Revenue") {
-  totalRevenue += amount;
+if (transaction.type === "Revenue") {
+  totalRevenue += transaction.amount;
 } else {
-  totalExpenses += amount;
+  totalExpenses += transaction.amount;
 }
 
 const netProfit = totalRevenue - totalExpenses;
