@@ -47,6 +47,19 @@ addTransactionButton.addEventListener("click", function () {
 closeModalButton.addEventListener("click", function () {
   transactionModal.hidden = true;
 });
+
+transactionModal.addEventListener("click", function (event) {
+  if (event.target === transactionModal) {
+    transactionModal.hidden = true;
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    transactionModal.hidden = true;
+  }
+});
+
 const transactionForm =
   document.getElementById("transaction-form");
 
