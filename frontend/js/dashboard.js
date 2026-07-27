@@ -34,6 +34,9 @@ const financeChart = new Chart(chartCanvas, {
 const addTransactionButton =
   document.getElementById("add-transaction-btn");
 
+const saveTransactionButton =
+  document.getElementById("save-transaction-btn");
+
 const closeModalButton =
   document.getElementById("close-modal-btn");
 
@@ -60,6 +63,7 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+
 const transactionForm =
   document.getElementById("transaction-form");
 
@@ -78,27 +82,45 @@ const netProfitElement =
 const profitMarginElement =
   document.getElementById("profit-margin");
 
-let totalRevenue = 84500;
-let totalExpenses = 52300;
-
-transactionForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
+const descriptionInput =
+  document.getElementById("transaction-description");
 
 const categoryInput =
   document.getElementById("transaction-category");
 
+const amountInput =
+  document.getElementById("transaction-amount");
+
+const typeInput =
+  document.getElementById("transaction-type");
+
 const dateInput =
-  document.getElementById("transaction-date");  
+  document.getElementById("transaction-date");
 
-  const descriptionInput =
-    document.getElementById("transaction-description");
+let totalRevenue = 84500;
+let totalExpenses = 52300;
 
-  const amountInput =
-    document.getElementById("transaction-amount");
+function updateSaveButton() {
+  const formIsComplete =
+    descriptionInput.value.trim() !== "" &&
+    categoryInput.value.trim() !== "" &&
+    amountInput.value.trim() !== "" &&
+    typeInput.value !== "" &&
+    dateInput.value !== "";
 
-  const typeInput =
-    document.getElementById("transaction-type");
+  saveTransactionButton.disabled = !formIsComplete;
+}
+
+descriptionInput.addEventListener("input", updateSaveButton);
+categoryInput.addEventListener("input", updateSaveButton);
+amountInput.addEventListener("input", updateSaveButton);
+typeInput.addEventListener("change", updateSaveButton);
+dateInput.addEventListener("change", updateSaveButton);
+
+updateSaveButton();
+
+transactionForm.addEventListener("submit", function (event) {
+  event.preventDefault();
 
   const transaction = {
   description: descriptionInput.value.trim(),
@@ -159,6 +181,8 @@ profitMarginElement.textContent =
   `${profitMargin.toFixed(1)}%`;
 
 transactionForm.reset();
+updateSaveButton();
+
 
 transactionModal.hidden = true;
 });

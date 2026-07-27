@@ -275,6 +275,7 @@
 
       <label for="transaction-type">Type</label>
       <select id="transaction-type" name="type" required>
+        <option value="">Choose type</option>
         <option value="Revenue">Revenue</option>
         <option value="Expense">Expense</option>
       </select>
@@ -289,7 +290,14 @@
         required
       >
 
-      <button type="submit">Save transaction</button>
+      <button
+        id="save-transaction-btn"
+       type="submit"
+       disabled
+      >
+        Save transaction
+      </button>
+
     </form>
   </div>
 </div>
