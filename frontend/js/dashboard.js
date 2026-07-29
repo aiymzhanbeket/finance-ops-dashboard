@@ -119,7 +119,7 @@ dateInput.addEventListener("change", updateSaveButton);
 
 updateSaveButton();
 
-transactionForm.addEventListener("submit", function (event) {
+transactionForm.addEventListener("submit", async function (event) { //async lets to wait for a backend response 
   event.preventDefault();
 
   const transaction = {
@@ -130,6 +130,31 @@ transactionForm.addEventListener("submit", function (event) {
   date: dateInput.value,
   status: "Pending"
 };
+
+try {
+  const response = await fetch(
+    "http://localhost:8080/api/transactions",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(transaction)
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Could not create transaction");
+  }
+
+  const savedTransaction = await response.json();
+
+  console.log("Backend response:", savedTransaction);
+} catch (error) {
+  console.error(error);
+  alert("Transaction could not be saved.");
+  return;
+}
 
   transactions.unshift(transaction);
   console.log(transactions);
@@ -186,3 +211,4 @@ updateSaveButton();
 
 transactionModal.hidden = true;
 });
+
