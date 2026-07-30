@@ -119,6 +119,51 @@ dateInput.addEventListener("change", updateSaveButton);
 
 updateSaveButton();
 
+const transactionsTableBody = document.getElementById(
+  "transactions-table-body"
+);
+
+async function loadTransactions() {
+  try {
+    const response = await fetch(
+      "http://localhost:8080/api/transactions"
+    );
+
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+
+    const savedTransactions = await response.json();
+
+    console.log("Saved transactions:", savedTransactions);
+
+    renderTransactions(savedTransactions);
+
+  } catch (error) {
+    console.error("Could not load transactions:", error);
+  }
+}
+function renderTransactions(transactions) {
+  transactionsTableBody.innerHTML = "";
+
+  transactions.forEach((transaction) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${transaction.date}</td>
+      <td>${transaction.description}</td>
+      <td>${transaction.category}</td>
+      <td>$${transaction.amount}</td>
+      <td>${transaction.type}</td>
+      <td>${transaction.status}</td>
+    `;
+
+    transactionsTableBody.appendChild(row);
+  });
+}
+
+loadTransactions();
+
 transactionForm.addEventListener("submit", async function (event) { //async lets to wait for a backend response 
   event.preventDefault();
 

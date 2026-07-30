@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @CrossOrigin(origins = {
     "http://127.0.0.1:5500",
@@ -15,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 })
 @RestController
 public class TransactionController {
+
+    @GetMapping("/api/transactions")
+    public List<Transaction> getTransactions() {
+        return transactionRepository.findAll();
+    }
 
     private final TransactionRepository transactionRepository;
 
