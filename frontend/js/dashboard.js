@@ -1,4 +1,4 @@
-const transactions = [];
+
 const chartCanvas = document.getElementById("financeChart");
 
 const revenue = [42000, 48000, 53000, 61000, 72000, 84500]; //easy then to replace with backend
@@ -200,9 +200,6 @@ try {
   alert("Transaction could not be saved.");
   return;
 }
-
-  transactions.unshift(transaction);
-  console.log(transactions);
 
   const newRow = document.createElement("tr");
 
