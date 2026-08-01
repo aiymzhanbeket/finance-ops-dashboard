@@ -94,9 +94,6 @@ const typeInput =
 const dateInput =
   document.getElementById("transaction-date");
 
-let totalRevenue = 84500;
-let totalExpenses = 52300;
-
 function updateSaveButton() {
   const formIsComplete =
     descriptionInput.value.trim() !== "" &&
@@ -135,6 +132,42 @@ async function loadTransactions() {
     console.log("Saved transactions:", savedTransactions);
 
     renderTransactions(savedTransactions);
+
+    function updateSummaryCards(transactions) {
+  let totalRevenue = 0;
+  let totalExpenses = 0;
+
+  for (const transaction of transactions) {
+    const amount = Number(transaction.amount);
+
+    if (transaction.type === "Revenue") {
+      totalRevenue += amount;
+    } else if (transaction.type === "Expense") {
+      totalExpenses += amount;
+    }
+  }
+
+  const netProfit = totalRevenue - totalExpenses;
+
+  let profitMargin = 0;
+
+  if (totalRevenue !== 0) {
+    profitMargin = (netProfit / totalRevenue) * 100;
+  }
+
+  totalRevenueElement.textContent =
+    `$${totalRevenue.toLocaleString()}`;
+
+  totalExpensesElement.textContent =
+    `$${totalExpenses.toLocaleString()}`;
+
+  netProfitElement.textContent =
+    `$${netProfit.toLocaleString()}`;
+
+  profitMarginElement.textContent =
+    `${profitMargin.toFixed(1)}%`;
+}
+    updateSummaryCards(savedTransactions);
 
   } catch (error) {
     console.error("Could not load transactions:", error);
@@ -200,31 +233,6 @@ try {
   alert("Transaction could not be saved.");
   return;
 }
-
-if (transaction.type === "Revenue") {
-  totalRevenue += transaction.amount;
-} else {
-  totalExpenses += transaction.amount;
-}
-
-const netProfit = totalRevenue - totalExpenses;
-
-const profitMargin =
-  totalRevenue === 0
-    ? 0
-    : (netProfit / totalRevenue) * 100;
-
-totalRevenueElement.textContent =
-  `$${totalRevenue.toLocaleString()}`;
-
-totalExpensesElement.textContent =
-  `$${totalExpenses.toLocaleString()}`;
-
-netProfitElement.textContent =
-  `$${netProfit.toLocaleString()}`;
-
-profitMarginElement.textContent =
-  `${profitMargin.toFixed(1)}%`;
 
 transactionForm.reset();
 updateSaveButton();
