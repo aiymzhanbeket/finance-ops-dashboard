@@ -67,9 +67,6 @@ document.addEventListener("keydown", function (event) {
 const transactionForm =
   document.getElementById("transaction-form");
 
-const transactionTableBody =
-  document.querySelector(".transactions-section tbody");
-
 const totalRevenueElement =
   document.getElementById("total-revenue");
 
@@ -143,6 +140,7 @@ async function loadTransactions() {
     console.error("Could not load transactions:", error);
   }
 }
+
 function renderTransactions(transactions) {
   transactionsTableBody.innerHTML = "";
 
@@ -153,8 +151,8 @@ function renderTransactions(transactions) {
       <td>${transaction.date}</td>
       <td>${transaction.description}</td>
       <td>${transaction.category}</td>
-      <td>$${transaction.amount}</td>
       <td>${transaction.type}</td>
+      <td>$${Number(transaction.amount).toLocaleString()}</td>
       <td>${transaction.status}</td>
     `;
 
@@ -162,7 +160,7 @@ function renderTransactions(transactions) {
   });
 }
 
-loadTransactions();
+loadTransactions(); //gets the official data from the PostgreSQL
 
 transactionForm.addEventListener("submit", async function (event) { //async lets to wait for a backend response 
   event.preventDefault();
@@ -195,32 +193,13 @@ try {
   const savedTransaction = await response.json();
 
   console.log("Backend response:", savedTransaction);
+  await loadTransactions();
+
 } catch (error) {
   console.error(error);
   alert("Transaction could not be saved.");
   return;
 }
-
-  const newRow = document.createElement("tr");
-
- const formattedDate = new Date(
-  `${dateInput.value}T00:00:00`
-).toLocaleDateString("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric"
-});
-
-newRow.innerHTML = `
-  <td>${formattedDate}</td>
-  <td>${transaction.description}</td>
-  <td>${transaction.category}</td>
-  <td>${transaction.type}</td>
-  <td>$${transaction.amount.toLocaleString()}</td>
-  <td>${transaction.status}</td>
-`;
-
-transactionTableBody.prepend(newRow);
 
 if (transaction.type === "Revenue") {
   totalRevenue += transaction.amount;
