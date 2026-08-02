@@ -1,0 +1,1 @@
+console.log("Transactions page JavaScript is connected.");
